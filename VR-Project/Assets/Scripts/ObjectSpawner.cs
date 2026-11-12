@@ -13,9 +13,17 @@ public class ObjectSpawner : MonoBehaviour
     private List<GameObject> currentInstances = new();
     private float respawnTimer;
 
-    void Start()
+    private void OnEnable()
     {
         Spawn();
+    }
+
+    private void OnDisable() // doesnt work
+    {
+        if (socket.hasSelection)
+        {
+            Destroy(socket.firstInteractableSelected.transform.gameObject);
+        }
     }
 
     void Update()
@@ -26,13 +34,11 @@ public class ObjectSpawner : MonoBehaviour
         {
             if (!currentInstances.Contains(socket.firstInteractableSelected.transform.gameObject))
             {
-                socket.EndManualInteraction();
+                Destroy(socket.firstInteractableSelected.transform.gameObject);
+                // TODO: Particles
             }
             return; 
         }
-
-        respawnTimer -= Time.deltaTime;
-        if (currentInstances.Count < maxInstances && respawnTimer <= 0f) { Spawn(); }
 
         foreach (GameObject instance in currentInstances)
         {
@@ -44,11 +50,17 @@ public class ObjectSpawner : MonoBehaviour
                 break;
             }
         }
+
+        respawnTimer -= Time.deltaTime;
+        if (respawnTimer <= 0f) { Spawn(); }
     }
 
     private void Spawn()
     {
-        currentInstances.Add(Instantiate(prefab, socket.transform.position, socket.transform.rotation));
-        respawnTimer = respawnTime;
+        if (!socket.hasSelection && currentInstances.Count < maxInstances)
+        {
+            currentInstances.Add(Instantiate(prefab, socket.transform.position, socket.transform.rotation));
+            respawnTimer = respawnTime;
+        }
     }
 }
