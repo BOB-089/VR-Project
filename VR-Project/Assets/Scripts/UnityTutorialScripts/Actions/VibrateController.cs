@@ -17,7 +17,7 @@ public class VibrateController : MonoBehaviour
         hapticPlayer = GetComponent<HapticImpulsePlayer>();
     }
 
-public void Vibrate(float amplitude, float duration)
+    public void Vibrate(float amplitude, float duration)
     {
         // OpenVR currently only supports amplitude
         hapticPlayer.SendHapticImpulse(amplitude, duration);
