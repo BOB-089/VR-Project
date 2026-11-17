@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 /// <summary>
 /// An interactable that can be pressed by a direct interactor
@@ -131,7 +132,7 @@ public class XRButton : UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseI
         return buttonTransform.localPosition.y < threshold;
     }
 
-    public override bool IsSelectableBy(UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor interactor)
+    public override bool IsSelectableBy(IXRSelectInteractor interactor)
     {
         return false;
     }
