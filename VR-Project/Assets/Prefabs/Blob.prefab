@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 102225198285529398}
   - component: {fileID: 547815006401251723}
   - component: {fileID: 6049957959810986348}
+  - component: {fileID: 1238977528703051564}
   m_Layer: 0
   m_Name: Blob
   m_TagString: Enemy
@@ -304,6 +305,21 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
+--- !u!114 &1238977528703051564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000229430385473530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baa0676a99b73504fa27412ca47d9ad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Blob
+  health: 0
+  damage: 0
+  moneyDropped: 0
 --- !u!1 &1536724256661305504
 GameObject:
   m_ObjectHideFlags: 0

@@ -4890,13 +4890,17 @@ MonoBehaviour:
   spawnEntries:
   - prefab: {fileID: 1000229430385473530, guid: 434dae747097cee4c9286de5f03891ab, type: 3}
     amount: 3
-    spawnInterval: 5
+    spawnInterval: 10
     spawnHeight: 0
+    clearanceRadius: 0.1
+    timer: 0
   - prefab: {fileID: 1000229430385473530, guid: 434dae747097cee4c9286de5f03891ab, type: 3}
     amount: 5
-    spawnInterval: 10
+    spawnInterval: 25
     spawnHeight: 1
-  spawnRadius: 1
+    clearanceRadius: 0.1
+    timer: 0
+  spawnRadius: 1.25
 --- !u!4 &525971082
 Transform:
   m_ObjectHideFlags: 0
@@ -4905,12 +4909,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525971080}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07969, y: 0, z: 0.87145}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1137972585}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &548533575
 GameObject:
@@ -9974,6 +9978,7 @@ Transform:
   - {fileID: 678717933}
   - {fileID: 8291519674955833249}
   - {fileID: 175498896}
+  - {fileID: 525971082}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1195232340
@@ -24448,4 +24453,3 @@ SceneRoots:
   - {fileID: 7904756870483758817}
   - {fileID: 1257801040292896080}
   - {fileID: 96345}
-  - {fileID: 525971082}
