@@ -33,9 +33,6 @@ public class EnemiesManager : MonoBehaviour
     {
         enemiesCounter.text = $"Enemies {enemies.Count}/{maxEnemies}";
         enemiesBar.fillAmount = (float)enemies.Count / maxEnemies;
-        if (enemies.Count >= maxEnemies)
-        {
-            // Lose
-        }
+        if (enemies.Count >= maxEnemies) { GameManager.Instance.EndGame(); }
     }
 }
