@@ -4,7 +4,7 @@ public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] protected int health;
     [SerializeField] protected int damage;
-    [SerializeField] protected int goldDropped;
+    [SerializeField] protected int moneyDropped;
 
     protected void Start()
     {
@@ -23,7 +23,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected void Die()
     {
-        // add player gold
+        MoneyManager.Instance.AddMoney(moneyDropped);
         EnemiesManager.Instance.RemoveEnemy(this);
         Destroy(gameObject);
     }
