@@ -2,9 +2,9 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField] protected int health;
-    [SerializeField] protected int damage;
-    [SerializeField] protected int moneyDropped;
+    [SerializeField] protected int health = 10;
+    [SerializeField] protected int damage = 5;
+    [SerializeField] protected int moneyDropped = 1;
 
     protected void Start()
     {
@@ -24,7 +24,11 @@ public abstract class Enemy : MonoBehaviour
     protected void Die()
     {
         MoneyManager.Instance.AddMoney(moneyDropped);
-        EnemiesManager.Instance.RemoveEnemy(this);
         Destroy(gameObject);
+    }
+
+    protected void OnDestroy()
+    {
+        EnemiesManager.Instance.RemoveEnemy(this);
     }
 }
