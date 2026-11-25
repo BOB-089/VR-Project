@@ -31,8 +31,25 @@ public class EnemiesManager : MonoBehaviour
 
     private void UpdateEnemyCount()
     {
+        if (enemiesCounter == null || enemiesBar == null) { return; }
         enemiesCounter.text = $"Enemies {enemies.Count}/{maxEnemies}";
         enemiesBar.fillAmount = (float)enemies.Count / maxEnemies;
         if (enemies.Count >= maxEnemies) { GameManager.Instance.EndGame(); }
+    }
+
+    public Character GetClosestEnemy(Vector3 position)
+    {
+        Enemy closestEnemy = null;
+        float closestDistance = Mathf.Infinity;
+        foreach (Enemy enemy in enemies)
+        {
+            float distance = Vector3.Distance(position, enemy.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestEnemy = enemy;
+            }
+        }
+        return closestEnemy;
     }
 }

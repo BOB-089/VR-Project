@@ -22,7 +22,7 @@ public class HeroesManager : MonoBehaviour
         heroes.Remove(hero);
     }
 
-    public Hero GetClosestHero(Vector3 position)
+    public Character GetClosestHero(Vector3 position)
     {
         Hero closestHero = null;
         float closestDistance = Mathf.Infinity;
