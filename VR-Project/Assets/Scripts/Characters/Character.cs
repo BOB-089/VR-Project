@@ -44,7 +44,7 @@ public abstract class Character : MonoBehaviour
         if (!IsActivated()) { return; }
         attackTimer -= Time.deltaTime;
         UpdateBehaviour();
-        if (agent.velocity.sqrMagnitude > 0.0001f) { transform.rotation = Quaternion.LookRotation(agent.velocity.normalized); }
+        UpdateLookDirection();
     }
 
     private void UpdateBehaviour()
@@ -87,6 +87,10 @@ public abstract class Character : MonoBehaviour
         if (health <= 0) { Die(); }
     }
 
+    protected virtual void UpdateLookDirection()
+    {
+        if (agent.velocity.sqrMagnitude > 0.0001f) { transform.rotation = Quaternion.LookRotation(agent.velocity.normalized); }
+    }
     protected virtual void Die() { Destroy(gameObject); }
     protected abstract Character GetTarget();
     protected abstract void Attack();

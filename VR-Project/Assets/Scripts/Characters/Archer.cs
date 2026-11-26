@@ -1,12 +1,17 @@
 using UnityEngine;
+using UnityEngine.ProBuilder;
 
 public class Archer : Hero
 {
+    [Header("Archer Specific")]
+    [SerializeField] private BasicProjectile projectile;
+    [SerializeField] private Transform firePoint;
     [SerializeField] private float retreatDistance = 0.5f;
 
     protected override void Attack()
     {
-        target.TakeDamage(damage);
+        BasicProjectile currentProjectile = Instantiate(projectile, firePoint.position, Quaternion.identity);
+        currentProjectile.Initialise(this, target, damage);
     }
 
     protected override void Move()
@@ -24,5 +29,13 @@ public class Archer : Hero
         {
             agent.ResetPath();
         }
+    }
+
+    protected override void UpdateLookDirection()
+    {
+        if (target == null) { base.UpdateLookDirection(); return; }
+        Vector3 direction = target.transform.position - transform.position;
+        direction.y = 0f;
+        transform.rotation = Quaternion.LookRotation(direction.normalized);
     }
 }
