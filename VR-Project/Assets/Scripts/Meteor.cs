@@ -4,6 +4,7 @@ public class Meteor : MonoBehaviour
 {
     [SerializeField] private int damage = 100;
     [SerializeField] private float radius = 0.5f;
+    [SerializeField] private GameObject explosionParticles;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -14,6 +15,7 @@ public class Meteor : MonoBehaviour
             Character character = collider.GetComponent<Character>();
             character?.TakeDamage(damage);
         }
+        Instantiate(explosionParticles, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }
