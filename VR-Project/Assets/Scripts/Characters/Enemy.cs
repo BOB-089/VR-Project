@@ -11,6 +11,16 @@ public abstract class Enemy : Character
         return HeroesManager.Instance.GetClosestHero(transform.position);
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        Forcefield forcefield = collision.gameObject.GetComponent<Forcefield>();
+        if (forcefield != null && attackTimer <= 0f) 
+        { 
+            forcefield.TakeDamage(damage);
+            attackTimer = attackCooldown;
+        }
+    }
+
     protected override void Die()
     {
         MoneyManager.Instance.AddMoney(moneyDropped);

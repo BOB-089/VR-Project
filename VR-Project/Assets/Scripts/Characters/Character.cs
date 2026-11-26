@@ -9,7 +9,7 @@ public abstract class Character : MonoBehaviour
     [SerializeField] protected int damage = 5;
     [SerializeField] protected float attackRadius = 0.2f;
     [SerializeField] protected float attackCooldown = 1f;
-    private float attackTimer = 0;
+    protected float attackTimer = 0;
 
     [Header("AI")]
     [SerializeField] protected float detectionRadius = 0.5f;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8664571976304075746}
   - component: {fileID: 2340592242430850630}
   - component: {fileID: 6584612311261634879}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fletching
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,9 +102,9 @@ GameObject:
   - component: {fileID: 7180567721068543435}
   - component: {fileID: 7615763378631517586}
   - component: {fileID: 6805709515091338596}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Arrow
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BasicProjectile
   speed: 1
   lifetime: 5
+  damage: 10
 --- !u!54 &7615763378631517586
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -181,7 +182,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -200,7 +201,7 @@ GameObject:
   - component: {fileID: 8013027264060742700}
   - component: {fileID: 5786856938098544483}
   - component: {fileID: 5905278880480876788}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +291,7 @@ GameObject:
   - component: {fileID: 1204451039161771374}
   - component: {fileID: 7605726418814701471}
   - component: {fileID: 2616739133160962705}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

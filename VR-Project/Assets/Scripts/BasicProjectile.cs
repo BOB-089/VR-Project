@@ -4,7 +4,7 @@ public class BasicProjectile : MonoBehaviour
 {
     [SerializeField] private float speed = 1f;
     [SerializeField] private float lifetime = 5f;
-    private int damage = 10;
+    [SerializeField] private int damage = 10;
     private Character owner;
 
     private void Start() { Destroy(gameObject, lifetime); }
@@ -23,6 +23,7 @@ public class BasicProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.isTrigger) return;
         Character character = other.GetComponent<Character>();
         if (character == owner) { return; }
         character?.TakeDamage(damage);
