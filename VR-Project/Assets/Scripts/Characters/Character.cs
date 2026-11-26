@@ -17,6 +17,7 @@ public abstract class Character : MonoBehaviour
     private XRGrabInteractable grabInteractable;
     protected NavMeshAgent agent;
     protected Character target;
+    protected float distanceToTarget;
 
     private bool IsActivated()
     {
@@ -50,7 +51,7 @@ public abstract class Character : MonoBehaviour
     {
         if ((target = GetTarget()) != null)
         {
-            float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+            distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
             if (distanceToTarget <= detectionRadius) { HandleTargetDetected(distanceToTarget); return; }
         }
         Wander();
