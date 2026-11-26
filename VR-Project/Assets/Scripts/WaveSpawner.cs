@@ -19,10 +19,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void Start()
     {
-        foreach (SpawnEntry spawnEntry in spawnEntries)
-        {
-            spawnEntry.timer = spawnEntry.spawnInterval;
-        }
+        foreach (SpawnEntry spawnEntry in spawnEntries) { spawnEntry.timer = spawnEntry.spawnInterval; }
     }
 
     void Update()
@@ -30,14 +27,9 @@ public class WaveSpawner : MonoBehaviour
         foreach (SpawnEntry spawnEntry in spawnEntries)
         {
             spawnEntry.timer -= Time.deltaTime;
-
             if (spawnEntry.timer <= 0f)
             {
-                for (int i = 0; i < spawnEntry.amount; i++)
-                {
-                    Spawn(spawnEntry);
-                }
-
+                for (int i = 0; i < spawnEntry.amount; i++) { Spawn(spawnEntry); }
                 spawnEntry.timer = spawnEntry.spawnInterval;
             }
         }
@@ -60,7 +52,25 @@ public class WaveSpawner : MonoBehaviour
             }
         }
         while (Physics.CheckSphere(spawnPosition, spawnEntry.clearanceRadius));
-
         Instantiate(spawnEntry.prefab, spawnPosition, Quaternion.identity);
+    }
+
+    public void AddEntry(GameObject prefab, int amount, float spawnInterval, float spawnHeight, float clearanceRadius)
+    {
+        SpawnEntry spawnEntry = new()
+        {
+            prefab = prefab,
+            amount = amount,
+            spawnInterval = spawnInterval,
+            spawnHeight = spawnHeight,
+            clearanceRadius = clearanceRadius
+        };
+        spawnEntries.Add(spawnEntry);
+    }
+
+    public void IncreaseSpawnAmount(GameObject prefab, int amount)
+    {
+        SpawnEntry spawnEntry = spawnEntries.Find(e => e.prefab == prefab);
+        if (spawnEntry != null) { spawnEntry.amount += amount; }
     }
 }
