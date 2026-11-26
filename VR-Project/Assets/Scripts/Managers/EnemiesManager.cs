@@ -39,7 +39,7 @@ public class EnemiesManager : MonoBehaviour
 
     public Character GetClosestEnemy(Vector3 position)
     {
-        Enemy closestEnemy = null;
+        Character closestEnemy = null;
         float closestDistance = Mathf.Infinity;
         foreach (Enemy enemy in enemies)
         {

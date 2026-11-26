@@ -30,6 +30,6 @@ public class MoneyManager : MonoBehaviour
 
     private void UpdateMoney()
     {
-        moneyText.text = $"{money}";
+        moneyText.text = $"${money}";
     }
 }

@@ -1,31 +1,49 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public abstract class Character : MonoBehaviour
 {
     [Header("Combat")]
     [SerializeField] protected int health = 10;
     [SerializeField] protected int damage = 5;
-    [SerializeField] protected float attackRadius = 0.1f;
+    [SerializeField] protected float attackRadius = 0.2f;
     [SerializeField] protected float attackCooldown = 1f;
-    protected float attackTimer = 0;
+    private float attackTimer = 0;
 
-    [Header("Detection")]
-    [SerializeField] protected float detectionRadius = 5f;
-    [SerializeField] protected float wanderRadius = 3f;
+    [Header("AI")]
+    [SerializeField] protected float detectionRadius = 0.5f;
+    [SerializeField] protected float wanderRadius = 1f;
+    private XRGrabInteractable grabInteractable;
     protected NavMeshAgent agent;
     protected Character target;
 
+    private bool IsActivated()
+    {
+        if (!agent.enabled)
+        {
+            if (!grabInteractable.isSelected && NavMesh.SamplePosition( transform.position, out _, 0.15f, NavMesh.AllAreas))
+            {
+                agent.enabled = true;
+                agent.SetDestination(GetRandomPosition());
+            }
+        }
+        if (grabInteractable.isSelected) { agent.enabled = false; return false; }
+        return agent.isOnNavMesh;
+    }
+
     private void Awake()
     {
+        grabInteractable = GetComponent<XRGrabInteractable>();
         agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(GetRandomPosition());
     }
 
     private void Update()
     {
+        if (!IsActivated()) { return; }
         attackTimer -= Time.deltaTime;
         UpdateBehaviour();
+        if (agent.velocity.sqrMagnitude > 0.0001f) { transform.rotation = Quaternion.LookRotation(agent.velocity.normalized); }
     }
 
     private void UpdateBehaviour()

@@ -24,7 +24,7 @@ public class HeroesManager : MonoBehaviour
 
     public Character GetClosestHero(Vector3 position)
     {
-        Hero closestHero = null;
+        Character closestHero = null;
         float closestDistance = Mathf.Infinity;
         foreach (Hero hero in heroes)
         {
