@@ -4959,6 +4959,7 @@ GameObject:
   - component: {fileID: 4264735901645851514}
   - component: {fileID: 7514513435250676816}
   - component: {fileID: 2341502537695858760}
+  - component: {fileID: 7104724412108718668}
   m_Layer: 0
   m_Name: Meteor
   m_TagString: Untagged
@@ -5139,3 +5140,17 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
+--- !u!114 &7104724412108718668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443936195798118297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d82a6b91a5403f45a533fb130a77fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Meteor
+  damage: 100
+  radius: 0.5
