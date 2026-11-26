@@ -4,17 +4,28 @@ public class Shop : MonoBehaviour
 {
     [SerializeField] private WaveSpawner waveSpawner;
     [SerializeField] private GameObject blobPrefab;
+    [SerializeField] private GameObject dartGoblinPrefab;
     [SerializeField] private GameObject blobSpawningLvl2Button;
     [SerializeField] private GameObject blobSpawningLvl3Button;
     [SerializeField] private GameObject archerSpawner;
     [SerializeField] private GameObject archerSpawnerButton;
+    [SerializeField] private GameObject dartGoblinSpawningButton;
 
     public void BuyArcherSpawner()
     {
         if (MoneyManager.Instance.SpendMoney(20)) 
         { 
-            archerSpawner.SetActive(true); 
+            archerSpawner.SetActive(true);
             archerSpawnerButton.SetActive(false);
+        }
+    }
+
+    public void BuyDartGoblinSpawning() 
+    {
+        if (MoneyManager.Instance.SpendMoney(30))
+        {
+            dartGoblinSpawningButton.SetActive(false);
+            waveSpawner.AddEntry(dartGoblinPrefab, 1, 5f, 0.5f, 0.1f);
         }
     }
 
